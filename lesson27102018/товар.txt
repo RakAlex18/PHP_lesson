@@ -1,0 +1,16 @@
+ТОВАР
+1 id //1
+2 name // mobile phone 3s
+3 alias //mobile-phone-3s
+4 seo_title //  mobile phone 3s
+5 meta_description //mobile phone 3s
+6 price // 4
+7 short_desc //краткое описание
+8 content // полное описание
+9 quanity // кол-во товаров
+10 image //картинка tovar.jpg
+11 is_active // 1 or 0
+12 is_recommded // 1 or 0
+
+
+<img src ="var/www/app/<?= $post["image"]?>">
