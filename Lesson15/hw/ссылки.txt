@@ -1,0 +1,4 @@
+1. Закрепление материала - http://php.net/manual/ru/reserved.php
+2. ООП - http://www.php.su/learnphp/phpoo/
+
+3. Создать класс с методом подключения к БД.
