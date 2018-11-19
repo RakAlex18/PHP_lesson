@@ -1,10 +1,24 @@
-/*ДОРАБОТАТЬ*/
+
 <?php
 require_once "registration.class.php";
+require_once "db.class.php";
+require_once "password.class.php";
 $form = new Registration($_POST);
+$db = new Database('localhost', 'root', '', 'avtodorogi');
 if ($_POST){
     if($form->validate()){
-        echo "Регистрация успешна";
+
+$email=$db->escape($form->getEmail());
+$name=$db->escape($form->getName());
+$password=new Password($db->escape($form->getPassword()));
+$res=$db->selectAll("SELECT * FROM users WHERE login = '$name'");
+if ($res){
+   echo $msg = "Такой пользователь существует";
+} else{
+    $db->selectAll("INSERT INTO users (login, email, password) VALUES ('{$name}','{$email}', '{$password}')");
+header("Location: index.php?msg=Регистрация успешна");
+}
+
     } else {
         echo $form->passwordMatch() ? 'Не все поля заполнены' : 'Пароли не совпадают';
     }
@@ -26,10 +40,15 @@ if ($_POST){
 </head>
 <body>
 <form action="" method="post">
-    <input type="text" name="name">
-    <input type="text" name="email">
-    <input type="text" name="password">
-    <input type="text" name="confirmPassword">
+    <input type="text" name="name" value="<?=$form->getName();?>">Login
+    <br>
+    <input type="email" name="email" value="<?=$form->getEmail();?>">Email
+    <br>
+
+    <br>
+    <input type="password" name="password">Пароль
+    <br>
+    <input type="password" name="confirmPassword">Повторить пароль
     <input type="submit" name="submit" id="">
 
 

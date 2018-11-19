@@ -1,6 +1,7 @@
 <?php
 
-class Registration{
+class Registration
+{
 
     private $name;
     private $email;
@@ -15,13 +16,64 @@ class Registration{
         $this->confirmPassword = $data['confirmPassword'];
     }
 
-    public function passwordMatch (){
+    public function passwordMatch()
+    {
 
         return $this->password == $this->confirmPassword;
     }
 
-    public function validate(){
-        return !empty($this->name)&& !empty($this->email)&& !empty($this->password)&& !empty($this->confirmPassword)&&$this->passwordMatch();
+    public function validate()
+    {
+        return !empty($this->name) && !empty($this->email) && !empty($this->password) && !empty($this->confirmPassword) && $this->passwordMatch();
     }
+
+
+    /**
+     * @return mixed
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param mixed $name
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * @param mixed $email
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPassword()
+    {
+        return $this->password;
+    }
+
+    /**
+     * @param mixed $password
+     */
+    public function setPassword($password)
+    {
+        $this->password = $password;
+    }
+
+
 }
+
 ?>
