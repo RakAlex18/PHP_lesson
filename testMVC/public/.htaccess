@@ -1,0 +1,9 @@
+RewriteEngine On
+RewriteBase /
+
+# скрываем файлы и папки от прямого доступа
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# убираем в урле index.php - знак ? **НЕ ПОЛУЧИЛОСЬ!!!***
+RewriteRule ^(.*)$ index.php\?url\=$1 [L,QSA]
